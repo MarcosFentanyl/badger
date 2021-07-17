@@ -19,4 +19,4 @@ size-breakdown: badger
 	avr-nm -S --size-sort badger | grep " [Tt] " || echo "empty"
 
 upload: badger.hex
-	teensy-loader-cli --mcu=TEENSY2 -v -w badger.hex
+	avrdude -p m32U4 -P /dev/ttyACM0 -c avr109 -U flash:w:badger.hex
